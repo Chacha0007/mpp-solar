@@ -46,7 +46,7 @@ class domoticz_mqtt(mqtt):
                 # make lowercase
                 key = key.lower()
             if key_wanted(key, filter, excl_filter):
-                #
+               #
                 # CONFIG / AUTODISCOVER
                 #
                 # <discovery_prefix>/<component>/[<node_id>/]<object_id>/config
@@ -56,13 +56,13 @@ class domoticz_mqtt(mqtt):
                 topic = topic.replace(" ", "_")
                 state_topic = f"domoticz/sensor/mpp_{tag}_{key}/state"
                 state_topic = state_topic.replace(" ", "_")
-                name = f"{tag} {_key}"
 
-                 if unit == "W":
-                     payload = f'{{"name": "{name}", "stat_t": "{state_topic}", "unit_of_meas": "{unit}", "uniq_id": "mpp_{tag}_{key}", "stat_cla": "measurement", "device_class": "power"  }}'
-                 else:
-                     payload = f'{{"name": "{name}", "stat_t": "{state_topic}", "unit_of_meas": "{unit}", "uniq_id": "mpp_{tag}_{key}"  }}'
-                 # msg = {"topic": topic, "payload": payload, "retain": True}
+                name = f"{tag} {_key}"
+                if unit == "W":
+                    payload = f'{{"name": "{name}", "stat_t": "{state_topic}", "unit_of_meas": "{unit}", "uniq_id": "mpp_{tag}_{key}", "stat_cla": "measurement", "device_class": "power"  }}'
+                else:
+                    payload = f'{{"name": "{name}", "stat_t": "{state_topic}", "unit_of_meas": "{unit}", "uniq_id": "mpp_{tag}_{key}"  }}'
+                # msg = {"topic": topic, "payload": payload, "retain": True}
                 msg = {"topic": topic, "payload": payload}
                 msgs.append(msg)
                 #
