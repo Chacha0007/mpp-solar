@@ -54,6 +54,7 @@ class domoticz_mqtt(mqtt):
                 # msg '{"name": "garden", "device_class": "motion", "state_topic": "homeassistant/binary_sensor/garden/state", "unit_of_measurement": "°C"}'
                 # topic = f"homeassistant/sensor/mpp_{tag}_{key}/config"
                 # topic = topic.replace(" ", "_")
+                topic = f"homeassistant/sensor/mpp_{tag}_{key}/config"
                 state_topic = f"domoticz/sensor/mpp_{tag}_{key}/state"
                 state_topic = state_topic.replace(" ", "_")
 
