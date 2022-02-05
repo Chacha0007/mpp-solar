@@ -57,6 +57,7 @@ class domoticz_mqtt(mqtt):
                 topic = f"homeassistant/sensor/mpp_{tag}_{key}/config"
                 state_topic = f"domoticz/sensor/mpp_{tag}_{key}/state"
                 state_topic = state_topic.replace(" ", "_")
+                name = f"{tag} {_key}"
 
                 # name = f"{tag} {_key}"
                 # if unit == "W":
