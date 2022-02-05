@@ -52,21 +52,19 @@ class domoticz_mqtt(mqtt):
                 # <discovery_prefix>/<component>/[<node_id>/]<object_id>/config
                 # topic "homeassistant/binary_sensor/garden/config"
                 # msg '{"name": "garden", "device_class": "motion", "state_topic": "homeassistant/binary_sensor/garden/state", "unit_of_measurement": "°C"}'
-                # topic = f"homeassistant/sensor/mpp_{tag}_{key}/config"
-                # topic = topic.replace(" ", "_")
                 topic = f"homeassistant/sensor/mpp_{tag}_{key}/config"
+                topic = topic.replace(" ", "_")
                 state_topic = f"domoticz/sensor/mpp_{tag}_{key}/state"
                 state_topic = state_topic.replace(" ", "_")
                 name = f"{tag} {_key}"
 
-                # name = f"{tag} {_key}"
-                # if unit == "W":
-                #     payload = f'{{"name": "{name}", "stat_t": "{state_topic}", "unit_of_meas": "{unit}", "uniq_id": "mpp_{tag}_{key}", "stat_cla": "measurement", "device_class": "power"  }}'
-                # else:
-                #     payload = f'{{"name": "{name}", "stat_t": "{state_topic}", "unit_of_meas": "{unit}", "uniq_id": "mpp_{tag}_{key}"  }}'
-                # # msg = {"topic": topic, "payload": payload, "retain": True}
-                # msg = {"topic": topic, "payload": payload}
-                # msgs.append(msg)
+                 if unit == "W":
+                     payload = f'{{"name": "{name}", "stat_t": "{state_topic}", "unit_of_meas": "{unit}", "uniq_id": "mpp_{tag}_{key}", "stat_cla": "measurement", "device_class": "power"  }}'
+                 else:
+                     payload = f'{{"name": "{name}", "stat_t": "{state_topic}", "unit_of_meas": "{unit}", "uniq_id": "mpp_{tag}_{key}"  }}'
+                 # msg = {"topic": topic, "payload": payload, "retain": True}
+                msg = {"topic": topic, "payload": payload}
+                msgs.append(msg)
                 #
                 # VALUE SETTING
                 #
